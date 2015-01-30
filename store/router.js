@@ -69,8 +69,7 @@ function save(user, id, script) {
 		});
 }
 
-load("aurelia");
-load("luc");
+// load(<username>);
 
 router.route('/')
  .get(function(req, res, next) {
