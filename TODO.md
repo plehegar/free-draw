@@ -5,6 +5,7 @@
 - [ ] drawCircle(r)
 - [ ] Revamp user interface
 - [ ] Add character dialog capabilities
+- [ ] dialog box to list the background and character images
 
 ## Next
 - [ ] Replace eval()
