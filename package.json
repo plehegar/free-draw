@@ -1,0 +1,14 @@
+{
+  "name": "draw",
+  "version": "1.0.0",
+  "description": "Draw",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.10.6"
+  }
+}

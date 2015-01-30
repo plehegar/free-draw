@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <title>Free Draw</title>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name=viewport content='width=device-width'>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div id='buttonArea'>
+   <a href="#" class='button' id="run">Run</a>
+   <a href="#" class='button' id="stop">Stop</a>
+   <a href="#" class='button' id="clear">Clear</a>
+   <a href="#" class='button' id="repeat">Add a repeat</a>
+   <a href="#" class='button' id="save">Save</a>
+   <a href="#" class='button' id="load">Load</a>
+   <a href="#" class='button' id="examples">Examples</a>
+ </div>
+ <h1>Free Draw</h1>
+
+ <canvas id='screen' width='800' height='800'>
+ </canvas>
+
+ <div id="editor" style='font-size: x-large'></div>
+
+<div id='characters'>
+ <img id='character-knight' src='characters/knight.png'>
+</div>
+
+<div id='hidden_characters' style='visibility: hidden'>
+</div>
+<div id='hidden_images' style='visibility: hidden'>
+</div>
+
+
+<div id='popup'>
+  <div id='popup-blank'>
+  </div>
+  <div id='popup-dialog'>
+    <div id='popup-content'>
+    </div>
+    <div id='popup-buttons'>
+      <div class='button' id='popup-ok-button'>Ok</div>
+      <div class='button' id='popup-cancel-button'>Cancel</div>
+    </div>
+  </div>
+  <div id='popup-forms' style='display: none'>
+    <div id='save-form'>
+      <h2 style='text-align: center'>Save Your Code</h2>
+      <p style='margin-top: 2em'>Title:</p>
+      <input title='Title' style='margin-left: 1em' type='text' placeholder='Your Title' required maxlength=78 size=80>
+      <p style='margin-top: 2em'>Description:</p>
+      <textarea title='Description' style='margin-left: 1em' placeholder='Your description' spellcheck wrap='hard' maxlength='250' cols='80' rows='8'></textarea>
+    </div>
+    <div id='error' style='margin-top: 2em; background: #ccc; color: black; border-radius: 20px'>
+      <h2 style='text-align: center'>Error</h2>
+      <p id='errorText'></p>
+    </div>
+    <div id='keys'>
+    </div>
+    <div id='examples-form'>
+    </div>
+  </div>
+</div>
+
+
+<script src="components/ace-builds/src-noconflict/ace.js"></script>
+<script src="base.js"></script>
+<script src="functions.js"></script>
+
+</body>
+</html>

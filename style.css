@@ -1,0 +1,110 @@
+body {
+      background: url("background.png");
+}
+h1 {
+      background: rgba(0, 0, 80, 0.6);
+      border-radius: 10px;
+      color: white; text-align: center;
+      text-shadow: 5px 5px 5px #888;
+}
+img {
+      border: 0;
+}
+#screen {
+      position: absolute;
+      top: 100px; left: 50px;
+      background: white;
+      opacity: 1;
+}
+#character-knight {
+      position: absolute;
+      top: 125px; left : 75px;
+}
+#script {
+      position: absolute;
+      top: 100px;
+      right: 50px;
+      font-size: larger;
+      font-weight: bold;
+      background: turquoise;
+      opacity: 0.9;
+      border: none;
+}
+#editor {
+      position: absolute;
+      top: 100px;
+      right: 50px;
+      opacity: 0.8;
+      width: 800px;
+      height: 800px;
+}
+#buttonArea {
+      text-align: center;
+      position: absolute;
+      top: 200px;
+      left: 875px;
+}
+#run {
+    position: relative;
+}
+
+.button {
+      box-shadow: 0px 1px 0px 0px #f0f7fa;
+      background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+      background-color:#33bdef;
+      border-radius:15px;
+      border:1px solid #057fd0;
+      display:block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:arial;
+      font-size:15px;
+      font-weight:bold;
+      padding:6px 24px;
+      text-decoration:none;
+      text-shadow:0px -1px 0px #5b6178;
+      text-align: center;
+}
+#buttonArea .button {
+      margin-top: 1em;
+}
+.button:hover {
+      background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+      background-color:#019ad2;
+}
+#popup-blank {
+      background: #ccc;opacity: 0.8;
+      position: absolute; top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+}
+#popup-dialog {
+      background-color: white;
+      box-shadow: 3px 3px 0.4em black, 0 0 0.4em black;
+      border: solid 2px black;
+      border-radius: 10px;
+      position: absolute;
+      top: 20%; left: 25%;
+      width: 50%; height: 60%;
+}
+#popup-content {
+      margin: auto;
+      width: 90%;
+      height: 90%;
+      font-weight: bold;
+      overflow: auto;
+      font-family: sans-serif;
+}
+#popup-content > * {
+      margin: auto;
+      padding: 1em;
+}
+#popup-buttons {
+      text-align: center;
+}
+#popup-buttons .button {
+      display: inline;
+      width: 30%;
+      margin-left: 3%;
+      margin-right: 3%;
+}
