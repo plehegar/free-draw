@@ -5,9 +5,9 @@ function setScene(id) {
 	$._drawBackground(id);
 }
 
-// setColor(color)
+// penColor(color)
 // change the color of the pencil (use "random" for a random color)
-// setColor("blue")
+// penColor("blue")
 function penColor(color) {
 	$._setColor(color);
 }
@@ -169,6 +169,9 @@ function show(character, e) {
 	$._drawCharacter(character.toLowerCase(), scale, effect);
 }
 
+// when(<event>, <args>)
+// react to events
+// such as when("mouse", fct). when("key", "a", fct). when("tick", fct)
 function when(event, arg1, arg2) {
 	switch (event.toLowerCase()) {
 		case "mouse":
