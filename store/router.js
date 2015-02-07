@@ -69,7 +69,7 @@ function save(user, id, script) {
 		});
 }
 
-// load(<username>);
+load("dummy");
 
 router.route('/')
  .get(function(req, res, next) {
