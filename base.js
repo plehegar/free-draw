@@ -804,7 +804,7 @@ HTTP.put = function(resource, body, callback) {
 };
 
 var userId = {
-  name: "aurelia"
+  name: "dummy"
 };
 
 var store = {
