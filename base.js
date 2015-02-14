@@ -670,6 +670,7 @@ popup.popupElement = document.getElementById("popup");
 
 popup.hide = function () {
   popup.popupElement.style.display = "none";
+  popup.popupElement.setAttribute("aria-disabled", "true");
 };
 popup.clear = function () {
   popup.content.clear();
@@ -680,6 +681,7 @@ popup.clear = function () {
 
 popup.show = function () {
   popup.popupElement.style.display = "block";
+  popup.popupElement.setAttribute("aria-disabled", "false");
 };
 
 popup.content = { content: document.getElementById("popup-content") };
@@ -922,9 +924,10 @@ buttons.loadHandler = function () {
     var a = document.createElement("a");
     a.href = '#';
     a.setAttribute("class", "button");
+    a.setAttribute("role", "button");
     a.setAttribute("style", "display: inline-block; margin: 1ex;");
     a.setAttribute("data-key", item.key);
-    a.textContent = item.title;
+    a.textContent = item.key + ":" + item.title;
     a.addEventListener('click', pick, true);
     store.loadContainer.appendChild(a);
   }
@@ -990,6 +993,7 @@ buttons.examplesHandler = function () {
     var a = document.createElement("a");
     a.href = '#';
     a.setAttribute("class", "button");
+    a.setAttribute("role", "button");
     a.setAttribute("style", "display: inline-block; margin: 1ex;");
     a.textContent = item.title;
     a.setAttribute("data-key", item.key);

@@ -9,13 +9,13 @@
 </head>
 <body>
  <div id='buttonArea'>
-   <a href="#" class='button' id="run">Run</a>
-   <a href="#" class='button' id="stop">Stop</a>
-   <a href="#" class='button' id="clear">Clear</a>
-   <a href="#" class='button' id="repeat">Add a repeat</a>
-   <a href="#" class='button' id="save">Save</a>
-   <a href="#" class='button' id="load">Load</a>
-   <a href="#" class='button' id="examples">Examples</a>
+   <a href="#" class='button' role='button' id="run">Run</a>
+   <a href="#" class='button' role='button' id="stop">Stop</a>
+   <a href="#" class='button' role='button' id="clear">Clear</a>
+   <a href="#" class='button' role='button' id="repeat">Add a repeat</a>
+   <a href="#" class='button' role='button' id="save">Save</a>
+   <a href="#" class='button' role='button' id="load">Load</a>
+   <a href="#" class='button' role='button' id="examples">Examples</a>
  </div>
  <h1>Free Draw</h1>
 
@@ -34,15 +34,15 @@
 </div>
 
 
-<div id='popup'>
+<div id='popup' role='dialog' aria-disabled='true'>
   <div id='popup-blank'>
   </div>
   <div id='popup-dialog'>
     <div id='popup-content'>
     </div>
     <div id='popup-buttons'>
-      <div class='button' id='popup-ok-button'>Ok</div>
-      <div class='button' id='popup-cancel-button'>Cancel</div>
+      <div class='button' role='button' id='popup-ok-button'>Ok</div>
+      <div class='button' role='button' id='popup-cancel-button'>Cancel</div>
     </div>
   </div>
   <div id='popup-forms' style='display: none'>
