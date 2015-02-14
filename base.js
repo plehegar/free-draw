@@ -440,11 +440,10 @@ function createEnv() {
       }
       evaluator(source);
       if (!world.runAnimation) {
-        console.log("start animation");
         world.runAnimation = true;
         requestAnimationFrame(animateLoop);
         if (callbacks.tick_callbacks.length === 0) {
-          setTimeout(function () { world.runAnimation = false;console.log("stop animation"); }, 5000);
+          setTimeout(function () { world.runAnimation = false; }, 5000);
         }
       }
     }
