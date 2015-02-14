@@ -198,7 +198,9 @@ function when(event, arg1, arg2) {
 	}
 }
 
-function require(id) {
+// require(<scriptId>)
+// require a script library
+function require(scriptId) {
     // ignored since we evaluate require differently
 }
 

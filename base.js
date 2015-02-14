@@ -399,8 +399,8 @@ function createEnv() {
   obj.__require = function (scriptId) {
     pendingScripts++;
     store.getValue(scriptId, function (r) {
-      if (r !== undefined && r.script !== undefined) {
-        obj.__evaluate(scriptId, r.script);
+      if (r !== undefined) {
+        obj.__evaluate(scriptId, r);
       }
       pendingScripts--;
     });
