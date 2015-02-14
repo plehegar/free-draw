@@ -863,7 +863,6 @@ store.getValue = function (key, callback) {
 
 store.addValue = function (key, value, callback) {
   store.addKey({ key: key, title: value.title, description: value.description });
-  store.values[key] = value;
   var obj = { title: value.title, description: value.description, script: value.script };
   HTTP.put(store.path + "/"+key, JSON.stringify(obj), function (err) {
     if (err) return console.log(err);
