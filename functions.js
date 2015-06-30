@@ -1,20 +1,20 @@
 // setScene(scene)
 // set the background scene
-// setScene("snowhouse")
+// setScene("snowhouse");
 function setScene(id) {
   $._drawBackground(id);
 }
 
 // penColor(color)
 // change the color of the pencil (use "random" for a random color)
-// penColor("blue")
+// penColor("blue");
 function penColor(color) {
   $._setColor(color);
 }
 
 // color_random()
 // return a random color
-// color_random()
+// color_random();
 function color_random() {
   return "rgb(" + math_random_int(0, 235) +
     ", " + math_random_int(0, 235) +
@@ -23,7 +23,7 @@ function color_random() {
 
 // math_random_int(min, max)
 // return a random number between min and max
-// random(1, 10)
+// random(1, 10);
 function math_random_int(min, max) {
   if (min > max) {
   var c = min;
@@ -39,42 +39,42 @@ var colour_random = color_random;
 
 // penWidth(width)
 // set the width of the pen
-// penWidth(10)
+// penWidth(10);
 function penWidth(width) {
   $._lineWidth(width);
 }
 
 // penCap(cap)
 // set the cap of the pen. cap is one of "butt", "round", "square"
-// penCap("square")
+// penCap("square");
 function penCap(cap) {
   $._lineCap(cap);
 }
 
 // direction(degree)
 // set the direction to a certain number of degree
-// direction(90)
+// direction(90);
 function direction(degree) {
   $._direction(degree);
 }
 
 // turnRight(degree)
 // turn clockwise given a certain number of degree
-// turnRight(90)
+// turnRight(90);
 function turnRight(degree) {
   $._turn(degree);
 }
 
 // turnLeft(degree)
 // turn counter-clockwise given a certain number of degree
-// turnLeft(45)
+// turnLeft(45);
 function turnLeft(degree) {
   $._turn(0-degree);
 }
 
 // moveTo(x, y)
 // move forward to a certain point
-// moveTo(10, 10)
+// moveTo(10, 10);
 function moveTo(x, y, pen) {
   var withPen = true;
   if (pen !== undefined) {
@@ -85,70 +85,70 @@ function moveTo(x, y, pen) {
 
 // moveForward(distance)
 // move forward given a certain distance
-// moveForward(100)
+// moveForward(100);
 function moveForward(distance) {
   $._move(distance, true);
 }
 
 // moveBackward(distance)
 // move backward given a certain distance
-// moveBackward(50)
+// moveBackward(50);
 function moveBackward(distance) {
   $._move(0-distance, true);
 }
 
 // jumpTo(x, y)
 // jump forward to a certain point
-// jumpTo(10, 10)
+// jumpTo(10, 10);
 function jumpTo(x, y) {
   $._moveTo(x, -y, false);
 }
 
 // jumpForward(distance)
 // jump forward given a certain distance
-// jumpForward(50)
+// jumpForward(50);
 function jumpForward(distance) {
   $._move(distance, false);
 }
 
 // jumpBackward(distance)
 // jump backward given a certain distance
-// jumpBackward(50)
+// jumpBackward(50);
 function jumpBackward(distance) {
   $._move(0-distance, false);
 }
 
 // rect(width, height, [fill])
 // draw a rectangle
-// rect(20, 10, "red")
+// rect(20, 10, "red");
 function rect(width, height, fill) {
   $._rect(width, -height, fill);
 }
 
 // text(text, [fontStyle])
 // write a text
-// text("Hello", "20px sans-serif")
+// text("Hello", "20px sans-serif");
 function text(text, fontStyle) {
   $._text(text, fontStyle);
 }
 
 // getCurrentPosition()
 // return the current position as an object with x, y, and orientation
-// getCurrentPosition()
+// getCurrentPosition();
 function getCurrentPosition() {
   return $._getCurrentPosition();
 }
 
 // resetToCenter()
 // back to the center, ready to move up
-// resetToCenter()
+// resetToCenter();
 function resetToCenter() {
   $._resetToCenter();
 }
 
 // show(character, [effect])
 // display a character with an optional effect ("mirror", "big", etc.)
-// show("princess", "small")
+// show("princess", "small");
 function show(character, e) {
   var scale = 1;
   var effect = false;
@@ -214,7 +214,7 @@ function when(event, arg1, arg2) {
 
 // require(script)
 // require a script library
-// require("myOwnFigure")
+// require("myOwnFigure");
 function require(scriptId) {
   //# ignored since we evaluate require differently
 }
