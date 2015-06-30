@@ -195,7 +195,7 @@ this._rect = function (width, height) {
 };
 
 this._getCurrentPosition = function () {
-  return { "x": world.x, "y": world.y };
+  return { "x": world.x, "y": world.y, "orientation": world.angle };
 };
 
 var callbacks = function () {};
