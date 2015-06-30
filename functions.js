@@ -33,7 +33,7 @@ function math_random_int(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// aliases for studio.code.org
+//# aliases for studio.code.org
 var penColour = penColor;
 var colour_random = color_random;
 
@@ -121,9 +121,9 @@ function rect(width, height) {
     $._rect(width, -height);
 }
 
-// resetToCenter()
-// back to the center, ready to move up
-// resetToCenter()
+// getCurrentPosition()
+// return the current position as an object with x, y, and orientation
+// getCurrentPosition()
 function getCurrentPosition() {
 	return $._getCurrentPosition();
 }
@@ -135,6 +135,9 @@ function resetToCenter() {
 	$._resetToCenter();
 }
 
+// show(character, [effect])
+// display a character with an optional effect ("mirror", "big", etc.)
+// show("princess", "small")
 function show(character, e) {
     var scale = 1;
     var effect = false;
@@ -169,9 +172,9 @@ function show(character, e) {
 	$._drawCharacter(character.toLowerCase(), scale, effect);
 }
 
-// when(<event>, <args>)
-// react to events
-// such as when("mouse", fct). when("key", "a", fct). when("tick", fct)
+// when(eventName, [keyboard], function)
+// react to events "mouse", "keyboard", and "tick"
+// when("mouse", fct); when("key", "a", fct); when("tick", fct);
 function when(event, arg1, arg2) {
 	switch (event.toLowerCase()) {
 		case "mouse":
@@ -198,13 +201,14 @@ function when(event, arg1, arg2) {
 	}
 }
 
-// require(<scriptId>)
+// require(script)
 // require a script library
+// require("myOwnFigure")
 function require(scriptId) {
-    // ignored since we evaluate require differently
+    //# ignored since we evaluate require differently
 }
 
-// delete me
+//# delete me
 
 function drawPlayer1() {
     penColor("red");
