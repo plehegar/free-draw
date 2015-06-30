@@ -11,6 +11,7 @@ $ bower install
 $ npm start
 ```
 
-Then simply open [`http://localhost:5000`](http://localhost:5000) on your web browser and start having fun.
+Then simply open [`http://localhost:5000/`](http://localhost:5000/) on your web browser and start having fun.
 
+For documentation, see [`http://localhost:5000/docs/`](http://localhost:5000/docs/) on your web browser and start having fun.
 

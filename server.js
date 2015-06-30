@@ -20,7 +20,11 @@ app.use(express.static(__dirname));
 
 var port = process.env.PORT || 5000;
 var server = app.listen(port, function () {
-	console.log("Go to http://localhost:%d/index.html",
-				server.address().port);
-	console.log("App started in", (Date.now() - t0) + "ms.");
+  console.log("Server started in", (Date.now() - t0) + "ms.\n");
+  console.log("Go to http://localhost:%d/index.html",
+    server.address().port);
+  console.log("For documentation, see http://localhost:%d/docs/index.html",
+    server.address().port);
+  console.log("\nStarting logs...");
+
 });
