@@ -156,11 +156,20 @@ function _drawLine(tx, ty) {
   world.canvas.closePath();
 }
 
-function _drawRect(tx, ty, tw, th) {
-  world.canvas.beginPath();
-  world.canvas.rect(tx, ty, tw, th);
-  world.canvas.stroke();
-  world.canvas.closePath();
+function _drawRect(tx, ty, tw, th, fill) {
+  if (fill !== undefined) {
+    var savedStyle = world.canvas.fillStyle;
+    world.canvas.fillStyle = fill;
+    world.canvas.fillRect(tx, ty, tw, th);
+    world.canvas.fillStyle = savedStyle;
+  } else {
+    world.canvas.strokeRect(tx, ty, tw, th);
+  }
+}
+
+function _drawText(text, tx, ty, font) {
+  world.canvas.font = font;
+  world.canvas.fillText(text, tx, ty);
 }
 
 this._turn = function (degree) {
@@ -190,8 +199,15 @@ this._moveTo = function (endX, endY, pen) {
   world.y = endY;
 };
 
-this._rect = function (width, height) {
-  _drawRect(world.x, world.y, width, height);
+this._rect = function (width, height, fill) {
+  _drawRect(world.x, world.y, width, height, fill);
+};
+
+this._text = function (text, font) {
+  if (font === undefined) {
+    font = "20px sans-serif";
+  }
+  _drawText(text, world.x, world.y, font);
 };
 
 this._getCurrentPosition = function () {
