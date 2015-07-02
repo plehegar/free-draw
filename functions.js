@@ -62,6 +62,7 @@ function direction(degree) {
 // turn clockwise given a certain number of degree
 // turnRight(90);
 function turnRight(degree) {
+  if (degree === undefined) degree = 90;
   $._turn(degree);
 }
 
@@ -69,6 +70,7 @@ function turnRight(degree) {
 // turn counter-clockwise given a certain number of degree
 // turnLeft(45);
 function turnLeft(degree) {
+  if (degree === undefined) degree = 90;
   $._turn(0-degree);
 }
 
@@ -87,6 +89,7 @@ function moveTo(x, y, pen) {
 // move forward given a certain distance
 // moveForward(100);
 function moveForward(distance) {
+  if (distance === undefined) distance = 50;
   $._move(distance, true);
 }
 
@@ -94,6 +97,7 @@ function moveForward(distance) {
 // move backward given a certain distance
 // moveBackward(50);
 function moveBackward(distance) {
+  if (distance === undefined) distance = 50;
   $._move(0-distance, true);
 }
 
