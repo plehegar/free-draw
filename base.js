@@ -128,9 +128,8 @@ function resetToCenter() {
   world.y = 0;
   world.angle=0;
 }
-this._resetToCenter = function () {
-  resetToCenter();
-};
+this._resetToCenter = resetToCenter;
+
 function _clear() {
   _clearCallbacks();
   world.runAnimation = false;
@@ -147,6 +146,7 @@ function _clear() {
     imgs.item(i).style.visibility = "visible";
   }
 }
+this._clear = _clear;
 
 function _drawLine(tx, ty) {
   world.canvas.beginPath();

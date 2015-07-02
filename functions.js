@@ -146,6 +146,13 @@ function resetToCenter() {
   $._resetToCenter();
 }
 
+// clear()
+// clear the drawing
+// clear();
+function clear() {
+  $._clear();
+}
+
 // show(character, [effect])
 // display a character with an optional effect ("mirror", "big", etc.)
 // show("princess", "small");
