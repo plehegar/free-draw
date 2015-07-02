@@ -229,35 +229,3 @@ function when(event, arg1, arg2) {
 function require(scriptId) {
   //# ignored since we evaluate require differently
 }
-
-//# delete me
-
-function drawPlayer1() {
-  penColor("red");
-  penCap("butt");
-  penWidth(21);
-  jumpForward(45);
-  moveBackward(90);
-  jumpForward(45);
-  turnLeft(90);
-  jumpForward(45);
-  moveBackward(90);
-  jumpForward(45);
-  turnRight(90);
-}
-
-function drawPlayer2() {
-  penColor("blue");
-  penCap("butt");
-  penWidth(21);
-  turnLeft(45);
-  jumpForward(45);
-  moveBackward(90);
-  jumpForward(45);
-  turnLeft(90);
-  jumpForward(45);
-  moveBackward(90);
-  jumpForward(45);
-  turnRight(90);
-  turnRight(45);
-}
