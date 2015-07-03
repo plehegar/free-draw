@@ -1,6 +1,6 @@
 // setScene(scene)
 // set the background scene
-// setScene("snowhouse");
+// setScene("park");
 function setScene(id) {
   $._drawBackground(id);
 }
@@ -12,19 +12,19 @@ function penColor(color) {
   $._setColor(color);
 }
 
-// color_random()
+// randomColor()
 // return a random color
-// color_random();
-function color_random() {
-  return "rgb(" + math_random_int(0, 235) +
-    ", " + math_random_int(0, 235) +
-    ", " + math_random_int(0, 235) + ")";
+// randomColor();
+function randomColor() {
+  return "rgb(" + random(0, 235) +
+    ", " + random(0, 235) +
+    ", " + random(0, 235) + ")";
 }
 
-// math_random_int(min, max)
+// random(min, max)
 // return a random number between min and max
 // random(1, 10);
-function math_random_int(min, max) {
+function random(min, max) {
   if (min > max) {
   var c = min;
   min = max;
@@ -34,6 +34,8 @@ function math_random_int(min, max) {
 }
 
 //# aliases for studio.code.org
+var math_random_int = random;
+var color_random = randomColor;
 var penColour = penColor;
 var colour_random = color_random;
 
@@ -131,7 +133,7 @@ function rect(width, height, fill) {
 
 // text(text, [fontStyle])
 // write a text
-// text("Hello", "20px sans-serif");
+// text("Hello"); text("Hello", "20px sans-serif");
 function text(text, fontStyle) {
   $._text(text, fontStyle);
 }
@@ -143,15 +145,15 @@ function getCurrentPosition() {
   return $._getCurrentPosition();
 }
 
-// resetToCenter()
+// moveToCenter()
 // back to the center, ready to move up
-// resetToCenter();
-function resetToCenter() {
+// moveToCenter();
+function moveToCenter() {
   $._resetToCenter();
 }
 
 // clear()
-// clear the drawing
+// clear the drawing and move back to center
 // clear();
 function clear() {
   $._clear();
@@ -159,7 +161,7 @@ function clear() {
 
 // show(character, [effect])
 // display a character with an optional effect ("mirror", "big", etc.)
-// show("princess", "small");
+// show("knight"); show("princess", "small");
 function show(character, e) {
   var scale = 1;
   var effect = false;
