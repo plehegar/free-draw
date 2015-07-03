@@ -26,6 +26,17 @@ io.read("functions.js").then(function (data) {
 }).catch(function (err) {
   console.log("LOADING ERROR " + err);
 }).then(function (functions) {
+  return functions.sort(function (a, b) {
+    if (a.name > b.name) {
+      return 1;
+    }
+    if (a.name < b.name) {
+      return -1;
+    }
+    // a must be equal to b
+    return 0;
+  });
+}).then(function (functions) {
   var fctStr = "";
   functions.forEach(function (f) {
     fctStr += "\n<dt><code>" + f.name + "</code></dt>"
