@@ -1,5 +1,5 @@
-var elsaX = 0;
-var elsaY = 0;
+let elsaX = 0;
+let elsaY = 0;
 
 function moveElsa(dx, dy) {
     elsaX = elsaX + dx;
@@ -11,22 +11,22 @@ function moveElsa(dx, dy) {
 function moveElsaUp() {
     moveElsa(0, 2);
 }
-when("keyboard", "up", moveElsaUp);
+when("keyboard", "ArrowUp", moveElsaUp);
 
 function moveElsaDown() {
     moveElsa(0, -2);
 }
-when("keyboard", "down", moveElsaDown);
+when("keyboard", "ArrowDown", moveElsaDown);
 
 function moveElsaLeft() {
     moveElsa(-2, 0);
 }
-when("keyboard", "left", moveElsaLeft);
+when("keyboard", "ArrowLeft", moveElsaLeft);
 
 function moveElsaRight() {
     moveElsa(2, 0);
 }
-when("keyboard", "right", moveElsaRight);
+when("keyboard", "ArrowRight", moveElsaRight);
 
 function moveElsaCenter() {
     elsaX = 0;

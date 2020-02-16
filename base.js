@@ -1,12 +1,16 @@
+/* eslint-env browser */
+
+"use strict";
+
 function evaluator(__script__) {
   eval(__script__);
 }
 
-var $ = new (function () {
-  var world = function() {};
+const $ = new (function () {
+const world = function() {};
 
 function createLayer() {
-  var elC = document.createElement("canvas");
+  const elC = document.createElement("canvas");
   elC.width = 800;
   elC.height = 800;
   return elC.getContext("2d");
@@ -32,7 +36,7 @@ world.canvas.translate(world.cx, world.cy);
 world.runAnimation = false;
 world.frames = 0;
 
-var buttons = function() {};
+const buttons = function() {};
 buttons.run = document.getElementById('run');
 buttons.stop = document.getElementById("stop");
 buttons.clear = document.getElementById("clear");
@@ -92,7 +96,7 @@ function updateScreen() {
   world.composite.fillRect(0, 0, world.width, world.height);
   if (world.background !== null) world.background.render(world.composite);
   world.composite.drawImage(world.canvas.canvas, 0, 0);
-  for (var key in world.sprites) {
+  for (const key in world.sprites) {
     world.sprites[key].render(world.composite);
   }
   world.cscreen.drawImage(world.composite.canvas, 0, 0);
@@ -141,8 +145,8 @@ function _clear() {
   setColor('#000');
   world.canvas.lineWidth = 1;
   world.canvas.lineCap = 'round';
-  var imgs = document.querySelectorAll("#characters img");
-  for (var i = 0; i < imgs.length; i++) {
+  const imgs = document.querySelectorAll("#characters img");
+  for (let i = 0; i < imgs.length; i++) {
     imgs.item(i).style.visibility = "visible";
   }
 }
@@ -158,7 +162,7 @@ function _drawLine(tx, ty) {
 
 function _drawRect(tx, ty, tw, th, fill) {
   if (fill !== undefined) {
-    var savedStyle = world.canvas.fillStyle;
+    const savedStyle = world.canvas.fillStyle;
     world.canvas.fillStyle = fill;
     world.canvas.fillRect(tx, ty, tw, th);
     world.canvas.fillStyle = savedStyle;
@@ -181,9 +185,9 @@ this._direction = function (degree) {
 };
 
 this._move = function (distance, pen) {
-  var rad = (world.angle-90) * (Math.PI / 180);
-    var endX = world.x + Math.round(Math.cos(rad)*distance);
-    var endY = world.y + Math.round(Math.sin(rad)*distance);
+  const rad = (world.angle-90) * (Math.PI / 180);
+    const endX = world.x + Math.round(Math.cos(rad)*distance);
+    const endY = world.y + Math.round(Math.sin(rad)*distance);
     if (pen) {
       _drawLine(endX, endY);
     }
@@ -214,13 +218,13 @@ this._getCurrentPosition = function () {
   return { "x": world.x, "y": world.y, "orientation": world.angle };
 };
 
-var callbacks = function () {};
+const callbacks = function () {};
 
 callbacks.mouse_callbacks = [];
 this._onmouse = function (callback) {
-  var s = document.getElementById("screen");
-  var c = function (e) {
-      var rect = s.getBoundingClientRect();
+  const s = document.getElementById("screen");
+  const c = function (e) {
+      const rect = s.getBoundingClientRect();
       callback(e.clientX-rect.left-(world.width/2),
               -(e.clientY-rect.top-(world.height/2)));
       updateScreen();
@@ -230,10 +234,10 @@ this._onmouse = function (callback) {
 };
 callbacks.keyboard_callbacks = [];
 this._onkey = function (key, callback) {
-  var c = function (e) {
-    var nodeName = e.target.nodeName;
-    if (nodeName !== "INPUT" && nodeName !== "TEXTAREA") {
-      var keydown = getKey(e).toLowerCase();
+  const c = function (e) {
+    const nodeName = e.target.nodeName;
+    if (nodeName !== "INPUT" && nodeName !== "TEXTAREA" && e.key) {
+      const keydown = e.key.toLowerCase();
       if (keydown === key || key === "all") {
         e.preventDefault();
         callback(keydown);
@@ -252,15 +256,15 @@ function addTicker(callback) {
   }
   callbacks.tick_callbacks.push(callback);
   if (callbacks.ticker === null) {
-    var t = callbacks.tick_callbacks;
+    const t = callbacks.tick_callbacks;
     callbacks.ticker = window.setInterval(function () {
       t.forEach(invoke);
     }, 34);
   }
 }
 function removeTicker(callback) {
-  var t = callbacks.tick_callbacks;
-  var newArray = callbacks.tick_callbacks.filter(function (e) {
+  const t = callbacks.tick_callbacks;
+  const newArray = callbacks.tick_callbacks.filter(function (e) {
     if (callback === e) return false;
     return true;
   });
@@ -280,7 +284,7 @@ this._ontick = function (callback) {
   }
 };
 function _clearCallbacks() {
-  var s = document.getElementById("screen");
+  const s = document.getElementById("screen");
   callbacks.mouse_callbacks.forEach(function (e) {
     s.removeEventListener("click", e, true);
   });
@@ -299,16 +303,16 @@ function _clearCallbacks() {
 world.img_loaded = [];
 
 (function() {
-  var imgs = document.querySelectorAll("#characters img");
-  for (var i = 0; i < imgs.length; i++) {
-    var el = imgs.item(i);
+  const imgs = document.querySelectorAll("#characters img");
+  for (let i = 0; i < imgs.length; i++) {
+    const el = imgs.item(i);
     world.img_loaded[el.id] = el;
   }
 })();
 
 this._drawBackground = function (id) {
-  var sid = "back-" + id;
-  var element = world.img_loaded[sid];
+  const sid = "back-" + id;
+  const element = world.img_loaded[sid];
 
   function onLoadImage() {
     world.img_loaded[sid] = element;
@@ -324,7 +328,7 @@ this._drawBackground = function (id) {
     onLoadImage();
   } else {
     world.img_loaded[sid] = false;
-    var hidden_images = document.getElementById("hidden_images");
+    const hidden_images = document.getElementById("hidden_images");
     element = document.createElement("img");
     element.id = sid;
     element.src = "backgrounds/" + id + ".png";
@@ -335,9 +339,9 @@ this._drawBackground = function (id) {
 };
 
 this._drawCharacter = function (id, scale, effect) {
-  var sid = "character-" + id;
-  var element = world.img_loaded[sid];
-  var sx = world.x, sy = world.y, sangle = world.angle;
+  const sid = "character-" + id;
+  const element = world.img_loaded[sid];
+  const sx = world.x, sy = world.y, sangle = world.angle;
 
   function onLoadImage() {
     world.img_loaded[sid] = element;
@@ -353,7 +357,7 @@ this._drawCharacter = function (id, scale, effect) {
     onLoadImage();
   } else {
     world.img_loaded[sid] = false;
-    var hidden_characters = document.getElementById("hidden_characters");
+    const hidden_characters = document.getElementById("hidden_characters");
     element = document.createElement("img");
     element.id = sid;
     element.src = "characters/" + id + ".png";
@@ -387,16 +391,16 @@ world.error = document.getElementById('error');
 world.env = null;
 
 function createEnv() {
-  var obj = {};
-  var scripts = [];
-  var pendingScripts = 0;
-  var requireMatch = /require\(".*[^"]+".*\)/g;
-  var stringMatch = /"([^"]+)"/;
+  const obj = {};
+  const scripts = [];
+  const pendingScripts = 0;
+  const requireMatch = /require\(".*[^"]+".*\)/g;
+  const stringMatch = /"([^"]+)"/;
 
   function __findRequire(script) {
-    var external = script.match(requireMatch);
+    const external = script.match(requireMatch);
     if (external !== null) {
-      for (var i = 0; i < external.length; i++) {
+      for (let i = 0; i < external.length; i++) {
         external[i] = external[i].match(stringMatch)[1].trim();
       }
     }
@@ -404,7 +408,7 @@ function createEnv() {
   }
 
   function __hasRequire(id) {
-    for (var i = scripts.length - 1; i >= 0; i--) {
+    for (let i = scripts.length - 1; i >= 0; i--) {
        if (scripts[i].id === id) {
         return true;
        }
@@ -412,22 +416,23 @@ function createEnv() {
     return false;
   }
 
-  obj.__require = function (scriptId) {
+  obj.__require = async function (scriptId) {
     pendingScripts++;
-    store.getValue(scriptId, function (r) {
-      if (r !== undefined) {
-        obj.__evaluate(scriptId, r);
-      }
-      pendingScripts--;
-    });
+    store.getValue(scriptId)
+      .then(r => {
+        if (r !== undefined) {
+          obj.__evaluate(scriptId, r);
+        }
+        pendingScripts--;
+      }).catch(console.error);
   };
 
   obj.__evaluate = function (id, script) {
-    var requires = __findRequire(script);
+    const requires = __findRequire(script);
     scripts.push({ id: id, script: script});
     if (requires !== null) {
-      for (var i = requires.length - 1; i >= 0; i--) {
-        var nid = requires[i];
+      for (let i = requires.length - 1; i >= 0; i--) {
+        const nid = requires[i];
         if (!__hasRequire(nid)) {
           obj.__require(nid);
         }
@@ -441,7 +446,7 @@ function createEnv() {
   };
 
 
-  var tryRun = 0;
+  const tryRun = 0;
 
   function run() {
     if (pendingScripts !== 0) {
@@ -450,8 +455,8 @@ function createEnv() {
         setTimeout(function () { run(); }, 300);
       }
     } else {
-      var source = "";
-      for (var i = scripts.length - 1; i >= 0; i--) {
+      let source = "";
+      for (let i = scripts.length - 1; i >= 0; i--) {
         source += "\n" + scripts[i].script;
       }
       evaluator(source);
@@ -503,10 +508,10 @@ world.KEY_MAP = {
 34: 'PageDown',
 35: 'End',
 36: 'Home',
-37: 'Left',
-38: 'Up',
-39: 'Right',
-40: 'Down',
+37: 'ArrowLeft',
+38: 'ArrowUp',
+39: 'ArrowRight',
+40: 'ArrowDown',
 41: 'Select',
 //42: 'Print', // ??? not in [key-values-list]
 43: 'Execute',
@@ -552,8 +557,11 @@ world.KEY_MAP = {
 };
 
 function getKey(keyEvent) {
+  return keyEvent.code;
+}
+/*
   if (keyEvent.key === undefined) {
-    var value = world.KEY_MAP[keyEvent.keyCode];
+    const value = world.KEY_MAP[keyEvent.keyCode];
     if (typeof value === "string") {
       keyEvent.key = value;
     } else if (value !== undefined) {
@@ -569,6 +577,7 @@ function getKey(keyEvent) {
   }
   return keyEvent.key;
 }
+*/
 
 buttons.runHandler = function () {
   world.env = createEnv();
@@ -609,12 +618,12 @@ editor.getChar = function () {
 
 // really simple checker function for javascript language
 editor.countCharacter = function (s, ref) {
-  var text = s;
-  var length = text.length;
-  var count = 0;
-  var c;
+  const text = s;
+  const length = text.length;
+  let count = 0;
+  let c;
 
-  for (var i = 0; i < length; i++) {
+  for (let i = 0; i < length; i++) {
         c = text.charAt(i);
     if (c == ref) {
       count++;
@@ -626,9 +635,9 @@ editor.countCharacter = function (s, ref) {
 editor._INDENT = "                                                     ";
 
 buttons.repeatHandler = function () {
-  var l = editor.getChar();
-  var pos = editor.aceEditor.getCursorPosition();
-  editor.aceEditor.insert("\nfor (var "+ l + " = 1; " + l + " <= 2; "+l+"++) {\n\t\t\n}\n");
+  const l = editor.getChar();
+  const pos = editor.aceEditor.getCursorPosition();
+  editor.aceEditor.insert("\nfor (let "+ l + " = 1; " + l + " <= 2; "+l+"++) {\n\t\t\n}\n");
   editor.indent();
   editor.aceEditor.moveCursorTo(pos.row+2, pos.column);
   editor.focus();
@@ -637,15 +646,15 @@ buttons.repeat.addEventListener("click", buttons.repeatHandler, true);
 
 // really simple beautifier function for javascript indentation
 editor.indent = function () {
-  var text = editor.getValue();
-  var length = text.length;
-  var value = "";
-  var indentation = 0;
-  var seenNewLine = true;
-  var alreadyReduced = false;
-  var c;
+  const text = editor.getValue();
+  const length = text.length;
+  let value = "";
+  let indentation = 0;
+  let seenNewLine = true;
+  let alreadyReduced = false;
+  let c;
 
-  for (var i = 0; i < length; i++) {
+  for (let i = 0; i < length; i++) {
         c = text.charAt(i);
         if (seenNewLine) {
           while ((c == ' ' || c == '\t') && i < length) {
@@ -782,27 +791,8 @@ popup.hide();
 
 var HTTP = function () {};
 
-HTTP.get = function(resource, callback) {
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-        if (this.status === 200) {
-          callback(this.responseText);
-        } else {
-          callback(null, { status: this.status } );
-        }
-    }
-  };
-  try {
-    xhr.open("GET", resource, true);
-    xhr.send(null);
-  } catch (e) {
-    console.log(e);
-  }
-};
-
 HTTP.put = function(resource, body, callback) {
-  var xhr = new XMLHttpRequest();
+  const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (this.readyState === 4) {
         if (this.status !== 200) {
@@ -820,30 +810,30 @@ HTTP.put = function(resource, body, callback) {
   }
 };
 
-var userId = {
+const userId = {
   name: "dummy"
 };
 
-var store = {
+const store = {
   keys: [],
   values: {}
 };
 
 store.path = '/store/' + userId.name;
 
-store.load = function (callback) {
-  HTTP.get(store.path, function(res, err) {
-    if (res !== null) {
-      store.keys = JSON.parse(res);
+store.load = async function (callback) {
+  return fetch(store.path)
+    .then(res => res.json())
+    .then(data => {
+      store.keys = data;
       if (callback !== undefined) {
         callback(store.keys);
       }
-    }
-  });
+    }).catch(console.error);
 };
 
 store.hasKey = function (key) {
-  for (var i = store.keys.length - 1; i >= 0; i--) {
+  for (let i = store.keys.length - 1; i >= 0; i--) {
     if (store.keys[i].key === key) return true;
   }
   return false;
@@ -856,36 +846,35 @@ store.addKey = function (key) {
 };
 
 store.getNewKey = function () {
-  var key = "" + Math.round(10000 * Math.random());
+  const key = "" + Math.round(10000 * Math.random());
   if (store.hasKey(key)) {
     return store.getNewKey();
   }
   return key;
 };
 
-store.getValue = function (key, callback) {
+store.getValue = async function (key) {
   if (store.values[key] !== undefined) {
     return callback(store.values[key]);
   }
-  HTTP.get(store.path+ "/"+key,  function(res, err) {
-    var value;
-    if (res !== null) {
-      store.values[key] = res;
-      value = store.values[key];
-    }
-    if (callback !== undefined) {
-      callback(value);
-    }
-  });
+  return fetch(store.path+ "/"+key)
+    .then(res => res.text())
+    .then(text => {
+      store.values[key] = text;
+      return text;
+    });
 };
 
-store.addValue = function (key, value, callback) {
+store.addValue = async function (key, value) {
   store.addKey({ key: key, title: value.title, description: value.description });
-  var obj = { title: value.title, description: value.description, script: value.script };
-  HTTP.put(store.path + "/"+key, JSON.stringify(obj), function (err) {
-    if (err) return console.log(err);
-    console.log("Store: Key " + key + " is " + this.status);
-  });
+  const obj = { title: value.title, description: value.description, script: value.script };
+  return fetch(store.path + "/"+key, {
+      method:"PUT",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(obj)
+    }).then(() => key);
 };
 
 store.load();
@@ -895,22 +884,22 @@ store.titleInput = store.form.querySelector("input");
 store.descriptionInput = store.form.querySelector("textarea");
 
 buttons.saveHandler = function () {
-  var id = store.getNewKey();
+  const id = store.getNewKey();
   popup.clear();
   popup.content.set(store.form);
   popup.ok.setHandler(function() {
-    var id = "" + Math.round(10000 * Math.random());
-    var text = editor.getValue();
-    var title = store.titleInput.value || id;
-    var description = store.descriptionInput.value || "";
-    var obj = {
+    const id = "" + Math.round(10000 * Math.random());
+    const text = editor.getValue();
+    const title = store.titleInput.value || id;
+    const description = store.descriptionInput.value || "";
+    const obj = {
       title: title.trim(),
       description: description.trim(),
       script: text
     };
-    store.addValue(id, obj, function (k) {
+    store.addValue(id, obj).then(k => {
       console.log("Stored " + k);
-    });
+    }).catch(console.error);
     store.titleInput.value = "";
     store.descriptionInput.value = "";
     popup.clear();
@@ -922,22 +911,24 @@ buttons.save.addEventListener("click", buttons.saveHandler, true);
 
 store.loadContainer = document.getElementById("keys");
 buttons.loadHandler = function () {
-  var selected = null;
-  function pick(e) {
-      store.getValue(e.target.getAttribute("data-key"), function (r) {
-        if (r !== undefined) {
-          editor.setValue(r);
-          editor.aceEditor.clearSelection();
-        }
-        popup.hide();
-        editor.focus();
-      });
+  const selected = null;
+  async function pick(e) {
+      return store.getValue(e.target.getAttribute("data-key"))
+        .then(r => {
+          if (r !== undefined) {
+            editor.setValue(r);
+            editor.aceEditor.clearSelection();
+          }
+          popup.hide();
+          editor.focus();
+          return r;
+        }).catch(console.error);
   }
   store.loadContainer.textContent = "";
   popup.clear();
-  for (var i = store.keys.length - 1; i >= 0; i--) {
-    var item = store.keys[i];
-    var a = document.createElement("a");
+  for (let i = store.keys.length - 1; i >= 0; i--) {
+    const item = store.keys[i];
+    const a = document.createElement("a");
     a.href = '#';
     a.setAttribute("class", "button");
     a.setAttribute("role", "button");
@@ -960,38 +951,38 @@ examples.path = '/examples';
 examples.keys = [];
 examples.scripts = {};
 
-examples.load = function (callback) {
-  HTTP.get(examples.path, function(res, err) {
-    if (res !== null) {
-      examples.keys = JSON.parse(res);
+examples.load = async function (callback) {
+  return fetch(examples.path)
+    .then(res => res.json())
+    .then(data => {
+      examples.keys = data;
       if (callback !== undefined) {
         callback(examples.keys);
       }
-    }
-  });
+    })
+    .catch(console.error);
 };
 
 examples.getScript = function (key, callback) {
   if (examples.scripts[key] !== undefined) {
     return callback(examples.scripts[key]);
   }
-  HTTP.get(examples.path+ "/"+key,  function(res, err) {
-    var value;
-    if (res !== null) {
-      examples.scripts[key] = res;
-      value = res;
-    }
-    if (callback !== undefined) {
-      callback(value);
-    }
-  });
+  return fetch(examples.path+ "/"+key)
+    .then(res => res.text())
+    .then(text => {
+      examples.scripts[key] = text;
+      if (callback !== undefined) {
+        callback(text);
+      }
+    })
+    .catch(console.error);
 };
 
 examples.load();
 
 examples.loadContainer = document.getElementById("examples-form");
 buttons.examplesHandler = function () {
-  var selected = null;
+  const selected = null;
   function pick(e) {
       examples.getScript(e.target.getAttribute("data-key"), function (r) {
         if (r !== undefined) {
@@ -1004,9 +995,9 @@ buttons.examplesHandler = function () {
   }
   examples.loadContainer.textContent = "";
   popup.clear();
-  for (var i = examples.keys.length - 1; i >= 0; i--) {
-    var item = examples.keys[i];
-    var a = document.createElement("a");
+  for (let i = examples.keys.length - 1; i >= 0; i--) {
+    const item = examples.keys[i];
+    const a = document.createElement("a");
     a.href = '#';
     a.setAttribute("class", "button");
     a.setAttribute("role", "button");

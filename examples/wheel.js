@@ -1,7 +1,7 @@
 function dessin(color) {
     penColor(color);
-    for (var i = 1; i <= 12; i++) {
-        for (var j = 1; j <= 2; j++) {
+    for (let i = 1; i <= 12; i++) {
+        for (let j = 1; j <= 2; j++) {
             moveForward(100);
             turnRight(60);
             moveForward(100);

@@ -2,13 +2,13 @@ function moveElsaUp() {
     jumpForward(2);
     show("knight");
 }
-when("keyboard", "up", moveElsaUp);
+when("keyboard", "ArrowUp", moveElsaUp);
 
 function moveElsaDown() {
     jumpBackward(2);
     show("knight");
 }
-when("keyboard", "down", moveElsaDown);
+when("keyboard", "ArrowDown", moveElsaDown);
 
 function moveElsaLeft() {
     turnLeft(90);
@@ -16,7 +16,7 @@ function moveElsaLeft() {
     turnRight(90);
     show("knight");
 }
-when("keyboard", "left", moveElsaLeft);
+when("keyboard", "ArrowLeft", moveElsaLeft);
 
 function moveElsaRight() {
     turnRight(90);
@@ -24,10 +24,10 @@ function moveElsaRight() {
     turnLeft(90);
     show("knight");
 }
-when("keyboard", "right", moveElsaRight);
+when("keyboard", "ArrowRight", moveElsaRight);
 
 function moveElsaCenter() {
-    resetToCenter();
+    moveToCenter();
     show("knight");
 }
 when("keyboard", "c", moveElsaCenter);

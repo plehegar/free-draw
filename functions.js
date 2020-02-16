@@ -1,3 +1,7 @@
+/* eslint-env browser */
+
+"use strict";
+
 // setScene(scene)
 // set the background scene
 // setScene("park");
@@ -26,18 +30,18 @@ function randomColor() {
 // random(1, 10);
 function random(min, max) {
   if (min > max) {
-  var c = min;
-  min = max;
-  max = c;
+    const c = min;
+    min = max;
+    max = c;
   }
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 //# aliases for studio.code.org
-var math_random_int = random;
-var color_random = randomColor;
-var penColour = penColor;
-var colour_random = color_random;
+const math_random_int = random;
+const color_random = randomColor;
+const penColour = penColor;
+const colour_random = color_random;
 
 // penWidth(width)
 // set the width of the pen
@@ -80,7 +84,7 @@ function turnLeft(degree) {
 // move forward to a certain point
 // moveTo(10, 10);
 function moveTo(x, y, pen) {
-  var withPen = true;
+  let withPen = true;
   if (pen !== undefined) {
     withPen = pen;
   }
@@ -163,11 +167,11 @@ function clear() {
 // display a character with an optional effect ("mirror", "big", etc.)
 // show("knight"); show("princess", "small");
 function show(character, e) {
-  var scale = 1;
-  var effect = false;
+  let scale = 1;
+  let effect = false;
   if (e !== undefined && typeof e === "string") {
-    var effects = e.split(',');
-    for (var i = effects.length - 1; i >= 0; i--) {
+    const effects = e.split(',');
+    for (let i = effects.length - 1; i >= 0; i--) {
       switch(effects[i]) {
       case "mirror":
         effect = true;
