@@ -101,7 +101,6 @@ const $ = new (function () {
 
   world.canvas.lineCap = 'round';
 
-
   function setColor(color) {
     if (color == "random") {
       color = "rgb(" + Math.round(235 * Math.random()) +
