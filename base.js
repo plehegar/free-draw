@@ -35,9 +35,6 @@ const $ = new (function () {
 
   world.canvas.translate(world.cx, world.cy);
 
-  world.runAnimation = false;
-  world.frames = 0;
-
   const buttons = {};
   buttons.run = document.getElementById('run');
   buttons.stop = document.getElementById("stop");
@@ -47,16 +44,12 @@ const $ = new (function () {
   buttons.save = document.getElementById('save');
   buttons.examples = document.getElementById('examples');
 
+  world.runAnimation = false;
+
   function animateLoop() {
     if (world.runAnimation) {
       window.requestAnimationFrame(animateLoop);
-      if ((world.frames % 2) === 0) {
-        updateScreen();
-      }
-      world.frames++;
-      if (world.frames == 60) world.frames = 0;
-    } else {
-      world.frames = 0;
+      updateScreen();
     }
   }
 
@@ -156,6 +149,7 @@ const $ = new (function () {
   this._clearPaint = _clearPaint;
 
   function _clearEvents() {
+    world.runAnimation = false;
     _clearCallbacks();
   }
   this._clearEvents = _clearEvents;
@@ -475,7 +469,7 @@ const $ = new (function () {
         evaluator(source);
         if (!world.runAnimation) {
           world.runAnimation = true;
-          requestAnimationFrame(animateLoop);
+          window.requestAnimationFrame(animateLoop);
           if (callbacks.tick_callbacks.length === 0) {
             setTimeout(function () { world.runAnimation = false; }, 5000);
           }
