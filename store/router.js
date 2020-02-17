@@ -7,14 +7,6 @@ var metadata = {};
 var storage_path = __dirname;
 var keys_file = 'keys.json';
 
-// v8 doesn't support String.endsWith
-function endsWith(subjectString, searchString) {
-  var s = subjectString.toString();
-  position = s.length - searchString.length;
-  var lastIndex = s.indexOf(searchString, position);
-  return lastIndex !== -1 && lastIndex === position;
-}
-
 function load(user) {
   if (metadata[user] === undefined) {
     metadata[user] = {};
@@ -40,7 +32,7 @@ function load(user) {
     }
     for (var i = files.length - 1; i >= 0; i--) {
       var file = files[i];
-      if (endsWith(file, ".json")) {
+      if (file.endsWith(".json")) {
         loadMeta(file.substring(0, file.length-5));
       }
     }
