@@ -281,7 +281,6 @@ const $ = new (function () {
       callback((Date.now() - world.beginAt) / 1000);
       addTicker(callback);
     } catch (e) {
-      console.log(e);
       popup.clear();
       world.error.querySelector("p").textContent = e.message;
       popup.cancel.hide();
@@ -490,7 +489,6 @@ const $ = new (function () {
     try {
       world.env.execute(editor.getValue());
     } catch (e) {
-      console.log(e);
       popup.clear();
       world.error.querySelector("p").textContent = e.message;
       popup.cancel.hide();
@@ -783,9 +781,7 @@ const $ = new (function () {
         description: description.trim(),
         script: text
       };
-      store.addValue(id, obj).then(k => {
-        console.log("Stored " + k);
-      }).catch(console.error);
+      store.addValue(id, obj).catch(console.error);
       store.titleInput.value = "";
       store.descriptionInput.value = "";
       popup.clear();
