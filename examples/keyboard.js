@@ -30,7 +30,7 @@ function moveElsaCenter() {
     moveToCenter();
     show("knight");
 }
-when("keyboard", "c", moveElsaCenter);
+when("keyboard", "C", moveElsaCenter);
 
 function moveElsa(x, y) {
     jumpTo(x, y);

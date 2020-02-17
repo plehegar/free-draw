@@ -33,7 +33,7 @@ function moveElsaCenter() {
     elsaY = 0;
     moveElsa(0, 0);
 }
-when("keyboard", "c", moveElsaCenter);
+when("keyboard", "C", moveElsaCenter);
 
 function jumpElsa(x, y) {
     elsaX = x;

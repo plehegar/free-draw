@@ -22,131 +22,174 @@
         This is the generated documentation for Free Draw.
       </p>
     </section>
+
+    <section>
+      <h2>Move functions</h2>
+
+      <p>Those functions will move the pen while drawing.</p>
+    <section><h2 id='moveBackward'>moveBackward(distance)</code></h2>
+
+    <p>move backward given a certain distance</p>
+    <pre class='example highlight'>moveBackward(50);</pre>
+    </section>
+    <section><h2 id='moveForward'>moveForward(distance)</code></h2>
+
+    <p>move forward given a certain distance</p>
+    <pre class='example highlight'>moveForward(100);</pre>
+    </section>
+    <section><h2 id='moveTo'>moveTo(x, y)</code></h2>
+
+    <p>move forward to a certain point</p>
+    <pre class='example highlight'>moveTo(10, 10);</pre>
+    </section>
+    <section><h2 id='moveToCenter'>moveToCenter()</code></h2>
+
+    <p>back to the center, ready to move up</p>
+    <pre class='example highlight'>moveToCenter();</pre>
+    </section>
+    </section>
+
+    <section>
+      <h2>Jump functions</h2>
+      <p>Those functions will move the pen without drawing.</p>
+
+      <section><h2 id='jumpBackward'>jumpBackward(distance)</code></h2>
+
+    <p>jump backward given a certain distance</p>
+    <pre class='example highlight'>jumpBackward(50);</pre>
+    </section>
+    <section><h2 id='jumpForward'>jumpForward(distance)</code></h2>
+
+    <p>jump forward given a certain distance</p>
+    <pre class='example highlight'>jumpForward(50);</pre>
+    </section>
+    <section><h2 id='jumpTo'>jumpTo(x, y)</code></h2>
+
+    <p>jump to a certain point</p>
+    <pre class='example highlight'>jumpTo(10, 10);</pre>
+    </section>
+    </section>
+
+    <section>
+      <h2>Pen functions</h2>
+      <p>Those functions set the properties of the pen (color, etc.).</p>
+    <section><h2 id='penCap'>penCap(cap)</code></h2>
+
+    <p>set the cap of the pen. cap is one of "butt", "round", "square"</p>
+    <pre class='example highlight'>penCap("square");</pre>
+    </section>
+    <section><h2 id='penColor'>penColor(color)</code></h2>
+
+    <p>change the color of the pencil (use "random" for a random color)</p>
+    <pre class='example highlight'>penColor("blue");</pre>
+    </section>
+    <section><h2 id='penWidth'>penWidth(width)</code></h2>
+
+    <p>set the width of the pen</p>
+    <pre class='example highlight'>penWidth(10);</pre>
+    </section>
+    </section>
+
+    <section>
+      <h2>Draw functions</h2>
+      <p>Those functions draw shapes and images.</p>
+
+      <section><h2 id='rect'>rect(width, height, [fill])</code></h2>
+
+        <p>draw a rectangle</p>
+        <pre class='example highlight'>rect(20, 10, "red");</pre>
+        </section>
+
+        <section><h2 id='show'>show(character, [effect])</code></h2>
+
+          <p>display a character with an optional effect ("mirror", "big", etc.), <strong>above</strong> the current drawing.</p>
+          <pre class='example highlight'>show("knight"); show("princess", "small");</pre>
+          </section>
+          <section><h2 id='text'>text(text, [fontStyle])</code></h2>
+
+          <p>write a text in the drawing.</p>
+          <pre class='example highlight'>text("Hello"); text("Hello", "20px sans-serif");</pre>
+          </section>
+
+          <section><h2 id='clear'>clearPaint()</code></h2>
+
+            <p>clear the drawing and move back to center</p>
+            <pre class='example highlight'>clearPaint();</pre>
+            </section>
+
+
+      </section>
+
+        <section>
+          <h2>Direction functions</h2>
+
+          <p>Angles use degrees (°): One full turn is equal to 2π radians (2π rad) and is equal to 360 degrees (360°).</p>
+      <section><h2 id='turnLeft'>turnLeft(degree)</code></h2>
+
+        <p>turn counter-clockwise given a certain number of degree</p>
+        <pre class='example highlight'>turnLeft(45);</pre>
+        </section>
+        <section><h2 id='turnRight'>turnRight(degree)</code></h2>
+
+        <p>turn clockwise given a certain number of degree</p>
+        <pre class='example highlight'>turnRight(90);</pre>
+        </section>
+
+
+        <section><h2 id='direction'>direction(degree)</code></h2>
+
+          <p>set the direction to a certain number of degree</p>
+          <pre class='example highlight'>direction(90);</pre>
+          </section>
+                </section>
+
+      <section>
+        <h2>Events functions</h2>
+      <section><h2 id='when'>when(eventName, [keyboard], function)</code></h2>
+
+        <p>react to events "mouse", "keyboard", and "tick"</p>
+        <pre class='example highlight'>function f(x, y) { ... };
+when("mouse", f);</pre>
+        <pre class='example highlight'>function f(key) { ... };
+when("key", "a", f);
+when("key", "all", f);</pre>
+        <pre class='example highlight'>function fct() { ... };
+when("tick", fct);</pre>
+        </section>
+
+        <section><h2 id='clear'>clearEvents()</code></h2>
+
+          <p>Clear all events.</p>
+          <pre class='example highlight'>clearEvents();</pre>
+        </section>
+              </section>
+
     <section>
       <h2>Functions</h2>
-      <dl class='functions'>
-<!--         <dt><code>function rect()</code></dt>
-        <dd>
-          <p>Description</p>
-          <pre class='example highlight'>rect();</pre>
-        <dd> -->
-        
-<dt><code>clear()</code></dt>
-<dd>
-<p>clear the drawing and move back to center</p>
-<pre class='example highlight'>clear();</pre>
-</dd>
-<dt><code>direction(degree)</code></dt>
-<dd>
-<p>set the direction to a certain number of degree</p>
-<pre class='example highlight'>direction(90);</pre>
-</dd>
-<dt><code>getCurrentPosition()</code></dt>
-<dd>
+<section><h2 id='getCurrentPosition'>getCurrentPosition()</code></h2>
+
 <p>return the current position as an object with x, y, and orientation</p>
 <pre class='example highlight'>getCurrentPosition();</pre>
-</dd>
-<dt><code>jumpBackward(distance)</code></dt>
-<dd>
-<p>jump backward given a certain distance</p>
-<pre class='example highlight'>jumpBackward(50);</pre>
-</dd>
-<dt><code>jumpForward(distance)</code></dt>
-<dd>
-<p>jump forward given a certain distance</p>
-<pre class='example highlight'>jumpForward(50);</pre>
-</dd>
-<dt><code>jumpTo(x, y)</code></dt>
-<dd>
-<p>jump forward to a certain point</p>
-<pre class='example highlight'>jumpTo(10, 10);</pre>
-</dd>
-<dt><code>moveBackward(distance)</code></dt>
-<dd>
-<p>move backward given a certain distance</p>
-<pre class='example highlight'>moveBackward(50);</pre>
-</dd>
-<dt><code>moveForward(distance)</code></dt>
-<dd>
-<p>move forward given a certain distance</p>
-<pre class='example highlight'>moveForward(100);</pre>
-</dd>
-<dt><code>moveTo(x, y)</code></dt>
-<dd>
-<p>move forward to a certain point</p>
-<pre class='example highlight'>moveTo(10, 10);</pre>
-</dd>
-<dt><code>moveToCenter()</code></dt>
-<dd>
-<p>back to the center, ready to move up</p>
-<pre class='example highlight'>moveToCenter();</pre>
-</dd>
-<dt><code>penCap(cap)</code></dt>
-<dd>
-<p>set the cap of the pen. cap is one of "butt", "round", "square"</p>
-<pre class='example highlight'>penCap("square");</pre>
-</dd>
-<dt><code>penColor(color)</code></dt>
-<dd>
-<p>change the color of the pencil (use "random" for a random color)</p>
-<pre class='example highlight'>penColor("blue");</pre>
-</dd>
-<dt><code>penWidth(width)</code></dt>
-<dd>
-<p>set the width of the pen</p>
-<pre class='example highlight'>penWidth(10);</pre>
-</dd>
-<dt><code>random(min, max)</code></dt>
-<dd>
+</section>
+<section><h2 id='random'>random(min, max)</code></h2>
+
 <p>return a random number between min and max</p>
 <pre class='example highlight'>random(1, 10);</pre>
-</dd>
-<dt><code>randomColor()</code></dt>
-<dd>
+</section>
+<section><h2 id='randomColor'>randomColor()</code></h2>
 <p>return a random color</p>
 <pre class='example highlight'>randomColor();</pre>
-</dd>
-<dt><code>rect(width, height, [fill])</code></dt>
-<dd>
-<p>draw a rectangle</p>
-<pre class='example highlight'>rect(20, 10, "red");</pre>
-</dd>
-<dt><code>require(script)</code></dt>
-<dd>
+</section>
+<section><h2 id='require'>require(script)</code></h2>
+
 <p>require a script library</p>
 <pre class='example highlight'>require("myOwnFigure");</pre>
-</dd>
-<dt><code>setScene(scene)</code></dt>
-<dd>
+</section>
+<section><h2 id='setScene'>setScene(scene)</code></h2>
+
 <p>set the background scene</p>
 <pre class='example highlight'>setScene("park");</pre>
-</dd>
-<dt><code>show(character, [effect])</code></dt>
-<dd>
-<p>display a character with an optional effect ("mirror", "big", etc.)</p>
-<pre class='example highlight'>show("knight"); show("princess", "small");</pre>
-</dd>
-<dt><code>text(text, [fontStyle])</code></dt>
-<dd>
-<p>write a text</p>
-<pre class='example highlight'>text("Hello"); text("Hello", "20px sans-serif");</pre>
-</dd>
-<dt><code>turnLeft(degree)</code></dt>
-<dd>
-<p>turn counter-clockwise given a certain number of degree</p>
-<pre class='example highlight'>turnLeft(45);</pre>
-</dd>
-<dt><code>turnRight(degree)</code></dt>
-<dd>
-<p>turn clockwise given a certain number of degree</p>
-<pre class='example highlight'>turnRight(90);</pre>
-</dd>
-<dt><code>when(eventName, [keyboard], function)</code></dt>
-<dd>
-<p>react to events "mouse", "keyboard", and "tick"</p>
-<pre class='example highlight'>when("mouse", fct); when("key", "a", fct); when("tick", fct);</pre>
-</dd>
-      </dl>
+</section>
   </section>
   </body>
 </html>

@@ -84,27 +84,21 @@ function turnLeft(degree) {
 // move forward to a certain point
 // moveTo(10, 10);
 function moveTo(x, y, pen) {
-  let withPen = true;
-  if (pen !== undefined) {
-    withPen = pen;
-  }
-  $._moveTo(x, -y, withPen);
+  $._moveTo(x, -y, pen || true);
 }
 
 // moveForward(distance)
 // move forward given a certain distance
 // moveForward(100);
 function moveForward(distance) {
-  if (distance === undefined) distance = 50;
-  $._move(distance, true);
+  $._move(distance, distance || 50);
 }
 
 // moveBackward(distance)
 // move backward given a certain distance
 // moveBackward(50);
 function moveBackward(distance) {
-  if (distance === undefined) distance = 50;
-  $._move(0-distance, true);
+  $._move(0-(distance || 50), true);
 }
 
 // jumpTo(x, y)
@@ -156,11 +150,18 @@ function moveToCenter() {
   $._resetToCenter();
 }
 
-// clear()
+// clearPaint()
 // clear the drawing and move back to center
 // clear();
-function clear() {
-  $._clear();
+function clearPaint() {
+  $._clearPaint();
+}
+
+// clearPaint()
+// clear the drawing and move back to center
+// clear();
+function clearEvents() {
+  $._clearEvents();
 }
 
 // show(character, [effect])
