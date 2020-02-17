@@ -345,7 +345,7 @@ const $ = new (function () {
 
   this._drawCharacter = function (id, scale, effect) {
     const sid = "character-" + id;
-    const element = world.img_loaded[sid];
+    let element = world.img_loaded[sid];
     const sx = world.x, sy = world.y, sangle = world.angle;
 
     function onLoadImage() {
