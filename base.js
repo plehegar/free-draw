@@ -29,6 +29,7 @@ const $ = new (function () {
   world.x = 0;
   world.y = 0;
   world.angle = 0; // in degree
+  world.beginAt = 0;
 
   world.composite.fillStyle = "#fff";
 
@@ -267,7 +268,7 @@ const $ = new (function () {
   callbacks.ticker = null;
   function addTicker(callback) {
     function invoke(e) {
-      e();
+      e((Date.now() - world.beginAt) / 1000);
     }
     callbacks.tick_callbacks.push(callback);
     if (callbacks.ticker === null) {
@@ -283,7 +284,7 @@ const $ = new (function () {
   }
   this._ontick = function (callback) {
     try {
-      callback();
+      callback((Date.now() - world.beginAt) / 1000);
       addTicker(callback);
     } catch (e) {
       console.log(e);
@@ -452,6 +453,7 @@ const $ = new (function () {
     };
 
     obj.execute = function (script) {
+      world.beginAt = Date.now();
       obj.__evaluate("", script);
       run();
     };
