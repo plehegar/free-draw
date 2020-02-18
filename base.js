@@ -71,16 +71,15 @@ const $ = new (function () {
     constructor(imgEl, angle, x, y, scale, effect) {
       this.img = imgEl;
       this.rad = angle * (Math.PI / 180);
-      this.x = x;
-      this.y = y;
+      this.x = x + world.cx;
+      this.y = y + world.cy;
       this.effect = effect;
       this.scale = scale;
     }
     render(ctx) {
       ctx.save();
-      ctx.translate(world.cx, world.cy);
-      ctx.rotate(this.rad);
       ctx.translate(this.x, this.y);
+      ctx.rotate(this.rad);
       if (this.effect) ctx.scale(-1, 1);
       ctx.drawImage(this.img,
         - (this.img.width / (2 * this.scale)), - (this.img.height / (2 * this.scale)),
@@ -166,8 +165,8 @@ const $ = new (function () {
       const savedStyle = world.canvas.fillStyle;
       world.canvas.save();
       world.canvas.fillStyle = fill;
-      world.canvas.rotate((world.angle) * (Math.PI / 180));
       world.canvas.translate(tx, ty);
+      world.canvas.rotate((world.angle) * (Math.PI / 180));
       world.canvas.fillRect(0, 0, tw, th);
       world.canvas.restore();
       world.canvas.fillStyle = savedStyle;
@@ -334,7 +333,6 @@ const $ = new (function () {
       world.img_loaded[sid] = false;
       const hidden_images = document.getElementById("hidden_images");
       element = document.createElement("img");
-      element.id = sid;
       element.src = "backgrounds/" + id + ".png";
       hidden_images.appendChild(element);
       element.addEventListener("load", onLoadImage, false);
