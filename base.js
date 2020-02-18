@@ -131,7 +131,7 @@ const $ = new (function () {
 
   function _clearPaint() {
     world.runAnimation = false;
-    world.background = null;
+    // world.background = null;
     world.canvas.clearRect(-(world.width / 2), -(world.height / 2), world.width, world.height);
     world.sprites = [];
     world.cscreen.clearRect(0, 0, world.width, world.height);
@@ -315,7 +315,7 @@ const $ = new (function () {
 
   this._drawBackground = function (id) {
     const sid = "back-" + id;
-    const element = world.img_loaded[sid];
+    let element = world.img_loaded[sid];
 
     function onLoadImage() {
       world.img_loaded[sid] = element;
@@ -497,6 +497,7 @@ const $ = new (function () {
   buttons.run.addEventListener("click", buttons.runHandler, run);
 
   function stop() {
+    world.background = null;
     _clearEvents();
     _clearPaint();
   }
